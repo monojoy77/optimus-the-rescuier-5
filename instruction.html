@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Play — Optimus The Rescuier 🚨</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="briefing-body">
+
+  <main class="briefing-page">
+
+    <header class="briefing-header">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <p class="briefing-tag">MISSION HANDBOOK</p>
+      <h1>🚨 Optimus The Rescuier</h1>
+      <p class="tagline">Everything you need to know before deploying.</p>
+    </header>
+
+    <!-- CONTROLS -->
+    <section class="info-section">
+      <h2>🎮 Controls</h2>
+      <div class="controls-columns">
+        <div class="control-block">
+          <h3>Move</h3>
+          <div class="key-row"><span class="key-cap">W</span><span class="key-or">or</span><span class="key-cap">▲</span><span class="key-desc">Move up</span></div>
+          <div class="key-row"><span class="key-cap">A</span><span class="key-or">or</span><span class="key-cap">◀</span><span class="key-desc">Move left</span></div>
+          <div class="key-row"><span class="key-cap">S</span><span class="key-or">or</span><span class="key-cap">▼</span><span class="key-desc">Move down</span></div>
+          <div class="key-row"><span class="key-cap">D</span><span class="key-or">or</span><span class="key-cap">▶</span><span class="key-desc">Move right</span></div>
+          <p class="dpad-caption">On mobile, use the on-screen D-pad below the board.</p>
+          <div class="dpad-diagram">
+            <div class="dpad-btn">▲</div>
+            <div class="dpad-middle-row">
+              <div class="dpad-btn">◀</div>
+              <div class="dpad-btn">▶</div>
+            </div>
+            <div class="dpad-btn">▼</div>
+          </div>
+        </div>
+        <div class="control-block">
+          <h3>Rescue</h3>
+          <div class="key-row"><span class="key-cap">E</span><span class="key-desc">Rescue a survivor you're standing on</span></div>
+          <p class="key-desc">Or tap the <strong>🛟 Rescue</strong> button that appears on screen. Rescuing
+          takes a couple of seconds — stay put while the progress bar fills. The
+          <strong>Rescue Tool</strong> shop upgrade speeds this up.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE LOOP -->
+    <section class="info-section">
+      <h2>🧭 The Rescue Loop</h2>
+      <p><strong>Find → approach → rescue → carry → evacuate.</strong></p>
+      <p>Walk onto a survivor's tile and a prompt appears — press <strong>E</strong>
+      or tap <strong>Rescue</strong> to start pulling them free. Once rescued,
+      they're marked as carried (shown as a small badge on the robot) and count
+      toward your total. You still need to reach the <strong>🏠 safe zone</strong>
+      after rescuing everyone to actually complete the mission.</p>
+    </section>
+
+    <!-- HAZARDS -->
+    <section class="info-section">
+      <h2>⚠️ Hazards</h2>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="legend-icon">🧱</span> Obstacle — blocks movement, doesn't harm you</div>
+        <div class="legend-item"><span class="legend-icon">🔥</span> Fire — costs a heart; spreads to nearby tiles over time on fire missions</div>
+        <div class="legend-item"><span class="legend-icon">⚡</span> Electric hazard — costs a heart on contact</div>
+        <div class="legend-item"><span class="legend-icon">☠️</span> Instant-fail zone — ends the mission the moment you touch it (Expert missions only)</div>
+        <div class="legend-item"><span class="legend-icon">🚗</span> Patrolling car — drives back and forth along a lane; costs a heart if it hits you</div>
+        <div class="legend-item"><span class="legend-icon">🕵️</span> Hunter — actively moves toward you every tick, appears on later missions</div>
+        <div class="legend-item"><span class="legend-icon">🌙</span> Low visibility — a fog layer hides most of the board except a radius around you</div>
+        <div class="legend-item"><span class="legend-icon">⏱️</span> Time Attack — noticeably shorter mission clock</div>
+      </div>
+      <p style="margin-top:10px;">Your health starts at <strong>❤️❤️❤️</strong> (3 hearts). Lose them all —
+      or touch a skull hazard — and the mission ends. Watch the timer too: it
+      flashes red and beeps once you're under 10 seconds.</p>
+    </section>
+
+    <!-- GOLD & SHOP -->
+    <section class="info-section">
+      <h2>💰 Gold &amp; the Shop</h2>
+      <p>Gold coins 🪙 are scattered on some missions. Collect them during a run
+      and, <strong>if you complete the mission</strong>, that gold is banked
+      permanently. Gold is a <strong>one-time reward per mission</strong> — if you
+      fail, any gold collected that attempt is lost, but rescuing progress and
+      unlocked missions are never lost. Replaying a mission you've already
+      claimed gold on won't pay out again.</p>
+      <p>Spend banked gold in the <strong>🛒 Shop</strong> (from the start screen)
+      on permanent upgrades:</p>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="legend-icon">🛡️</span> Armor Plating — +1 max health per level (stacks twice)</div>
+        <div class="legend-item"><span class="legend-icon">🛟</span> Shield Charm — absorbs the first hit each mission for free</div>
+        <div class="legend-item"><span class="legend-icon">🌙</span> Vision Boost — widens the fog radius on low-visibility missions</div>
+        <div class="legend-item"><span class="legend-icon">🧲</span> Coin Magnet — auto-collects gold one tile away</div>
+        <div class="legend-item"><span class="legend-icon">⏩</span> Rescue Tool — cuts the rescue timer roughly in half</div>
+        <div class="legend-item"><span class="legend-icon">🔋</span> Battery Pack — +10 seconds of mission time per level</div>
+        <div class="legend-item"><span class="legend-icon">🧯</span> Fire Shield — one free save from fire damage per mission</div>
+      </div>
+      <p style="margin-top:10px;">You can also unlock and equip robot skins in the shop — each one swaps every
+      animation (idle, walk, rescue, damage, victory) to a matching set of emoji.</p>
+    </section>
+
+    <!-- SECOND CHANCE -->
+    <section class="info-section">
+      <h2>💔 Second Chances</h2>
+      <p>If you go down mid-mission, you may be offered the chance to spend gold
+      to refill your health and keep playing from exactly where you fell —
+      once per mission. This isn't offered if the mission clock simply runs out,
+      since more health won't buy you more time.</p>
+    </section>
+
+    <!-- MISSIONS -->
+    <section class="info-section">
+      <h2>🗺️ Missions</h2>
+      <p>There are 50 missions across three tiers — 🟢 Beginner, 🟡 Intermediate,
+      and 🔴 Expert. Missions open one by one: clearing a mission unlocks the
+      next. Every mission has its own name and briefing, and later missions
+      bring more survivors, more hazards, and less time on the clock. Before
+      each run you'll see a full mission briefing (location, objective, time,
+      danger, reward) followed by a 3-2-1-GO countdown.</p>
+      <p>Mission-select icons tell you what to expect: 🔥 fire spreads &middot;
+      🌙 low visibility &middot; 🚗 patrolling cars &middot; ☠️ instant fail &middot;
+      ⏱️ time attack &middot; 🕵️ hunter.</p>
+    </section>
+
+    <!-- RANK & BADGES -->
+    <section class="info-section">
+      <h2>🏅 Rank &amp; Badges</h2>
+      <p>Your rank climbs automatically as you unlock more missions: Rookie
+      Rescuer → Field Rescuer → Emergency Specialist → Elite Rescuer → Master
+      Rescuer. Check your <strong>🏅 Profile</strong> from the start screen for
+      your current rank, lifetime stats, and badges earned for things like your
+      first rescue, saving 10+ survivors, finishing a mission without taking
+      damage, and more.</p>
+    </section>
+
+    <!-- MINIMAP -->
+    <section class="info-section">
+      <h2>🗺️ Minimap</h2>
+      <p>The small panel in the corner of the board shows a bird's-eye view:
+      🤖 you, 🟢 survivors, 🔴 danger (hazards, cars, hunters), and 🟡 gold —
+      handy for planning a route before you commit to it.</p>
+    </section>
+
+    <a href="index.html" class="game-button back-button">← Back to Game</a>
+    <p class="credit-line">Developed by <strong>Monojoy</strong></p>
+
+  </main>
+
+</body>
+</html>

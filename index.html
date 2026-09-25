@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimus The Rescuier 🚨</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="game-header">
+    <h1>🚨 Optimus The Rescuier</h1>
+    <p class="tagline">Find and rescue all survivors before time runs out!</p>
+  </header>
+
+  <!-- ===================== HUD ===================== -->
+  <section class="hud" id="hud">
+    <div class="hud-item" id="level-display">
+      <span class="hud-label">🎯 Mission:</span>
+      <span id="level-value">1</span>
+    </div>
+
+    <div class="hud-item" id="rank-display">
+      <span class="hud-label">🏅 Rank:</span>
+      <span id="rank-value">Rookie Rescuer</span>
+    </div>
+
+    <div class="hud-item" id="score-display">
+      <span class="hud-label">⭐ Score:</span>
+      <span id="score-value">0</span>
+    </div>
+
+    <div class="hud-item" id="timer-display">
+      <span class="hud-label">⏱️ Time:</span>
+      <span id="timer-value">60</span>
+    </div>
+
+    <div class="hud-item" id="health-display">
+      <span class="hud-label">❤️ Health:</span>
+      <span id="health-value">❤️❤️❤️</span>
+    </div>
+
+    <div class="hud-item" id="survivors-display">
+      <span class="hud-label">🧍 Survivors:</span>
+      <span id="survivors-value">0 / 0</span>
+    </div>
+
+    <div class="hud-item" id="gold-bank-display">
+      <span class="hud-label">💰 Gold:</span>
+      <span id="gold-bank-value">0</span>
+    </div>
+
+    <div class="hud-item" id="gold-run-display">
+      <span class="hud-label">🪙 This Run:</span>
+      <span id="gold-run-value">0/0</span>
+    </div>
+  </section>
+
+  <!-- ===================== MAIN GAME AREA ===================== -->
+  <main class="game-container">
+
+    <!-- Start Screen -->
+    <section class="screen" id="start-screen">
+      <h2>Ready for the Mission?</h2>
+      <p>Rescue every survivor, dodge the danger, and get home safe.</p>
+      <p class="rank-line">🏅 Current rank: <strong id="start-rank-value">Rookie Rescuer</strong></p>
+      <div class="screen-buttons">
+        <button id="start-button" class="game-button">▶ Choose a Mission</button>
+        <button id="shop-button-start" class="game-button secondary-button">🛒 Shop</button>
+        <button id="profile-button-start" class="game-button secondary-button">🏅 Profile</button>
+        <a href="instructions.html" class="game-button secondary-button">📖 How to Play</a>
+      </div>
+    </section>
+
+    <!-- Shop Screen: spend banked gold on upgrades + robot skins -->
+    <section class="screen shop-screen" id="shop-screen" hidden>
+      <h2>🛒 Upgrade Shop</h2>
+      <p class="shop-gold-line">💰 Gold available: <span id="shop-gold-value">0</span></p>
+
+      <h3 class="shop-section-title">Upgrades</h3>
+      <div class="shop-grid" id="shop-upgrades-grid"></div>
+
+      <h3 class="shop-section-title">Robot Skins</h3>
+      <div class="shop-grid" id="shop-skins-grid"></div>
+
+      <button id="back-to-start-button-shop" class="game-button secondary-button">← Back</button>
+    </section>
+
+    <!-- Profile Screen: rank + badges + lifetime stats -->
+    <section class="screen profile-screen" id="profile-screen" hidden>
+      <h2>🏅 Rescuer Profile</h2>
+      <p class="rank-line">Current rank: <strong id="profile-rank-value">Rookie Rescuer</strong></p>
+      <div class="profile-stats" id="profile-stats"></div>
+
+      <h3 class="shop-section-title">Badges</h3>
+      <div class="shop-grid" id="badges-grid"></div>
+
+      <button id="back-to-start-button-profile" class="game-button secondary-button">← Back</button>
+    </section>
+
+    <!-- Mission Select Screen -->
+    <section class="screen level-select-screen" id="level-select-screen" hidden>
+      <h2>Select a Mission</h2>
+      <p>Missions open one by one — clear a mission to unlock the next.</p>
+      <p style="font-size:0.8rem; color:#9fb3bd;">🔥 fire spreads &middot; 🌙 low visibility &middot; 🚗 patrolling cars &middot; ☠️ instant fail &middot; ⏱️ time attack &middot; 🕵️ hunter</p>
+
+      <div class="level-tier" data-tier="beginner">
+        <h3 class="tier-title tier-beginner">🟢 Beginner &middot; Missions 1–15</h3>
+        <div class="levels-grid" id="levels-grid-beginner"></div>
+      </div>
+
+      <div class="level-tier" data-tier="intermediate">
+        <h3 class="tier-title tier-intermediate">🟡 Intermediate &middot; Missions 16–35</h3>
+        <div class="levels-grid" id="levels-grid-intermediate"></div>
+      </div>
+
+      <div class="level-tier" data-tier="expert">
+        <h3 class="tier-title tier-expert">🔴 Expert &middot; Missions 36–50</h3>
+        <div class="levels-grid" id="levels-grid-expert"></div>
+      </div>
+
+      <button id="back-to-start-button" class="game-button secondary-button">← Back</button>
+    </section>
+
+    <!-- Game Board -->
+    <section class="game-board-wrapper" id="game-board-wrapper" hidden>
+
+      <!-- Mission name + briefing, shown briefly once gameplay begins -->
+      <div class="mission-briefing" id="mission-briefing" hidden>
+        <h3 id="mission-briefing-title">Mission</h3>
+        <p id="mission-briefing-text">Briefing text goes here.</p>
+      </div>
+
+      <div class="board-frame">
+        <div class="game-board" id="game-board">
+          <!-- Robot, survivors, obstacles, hazards, gold, and safe zone
+               will be placed here dynamically by JavaScript -->
+          <div class="robot anim-idle" id="robot">
+            <span id="robot-face">🤖</span>
+            <span class="carry-badge" id="robot-carry-badge" hidden>🧍×0</span>
+          </div>
+
+          <!-- Fog-of-war layer for "limited visibility" missions -->
+          <div class="fog-overlay" id="fog-overlay"></div>
+        </div>
+
+        <!-- Minimap: dots for survivors / hazards / gold / player -->
+        <div class="minimap" id="minimap">
+          <div class="minimap-legend">🤖you 🟢person 🔴danger 🟡gold</div>
+          <div class="minimap-grid" id="minimap-grid"></div>
+        </div>
+      </div>
+
+      <!-- Rescue prompt: appears when standing on a survivor -->
+      <div class="rescue-prompt" id="rescue-prompt" hidden>
+        <span id="rescue-prompt-text">🧍 Survivor found — press <kbd>E</kbd> or tap Rescue</span>
+        <button class="game-button" id="rescue-action-button">🛟 Rescue</button>
+      </div>
+
+      <!-- Rescue-in-progress bar -->
+      <div class="rescue-progress" id="rescue-progress" hidden>
+        <span>🔄 Rescuing...</span>
+        <div class="rescue-progress-track"><div class="rescue-progress-fill" id="rescue-progress-fill"></div></div>
+      </div>
+
+      <!-- On-screen controls for mobile / touch players -->
+      <div class="mobile-controls" id="mobile-controls">
+        <button class="control-btn control-up" id="btn-up" aria-label="Move up">▲</button>
+        <div class="control-row">
+          <button class="control-btn control-left" id="btn-left" aria-label="Move left">◀</button>
+          <button class="control-btn control-down" id="btn-down" aria-label="Move down">▼</button>
+          <button class="control-btn control-right" id="btn-right" aria-label="Move right">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Win Screen: Mission Debrief -->
+    <section class="screen mission-debrief" id="win-screen" hidden>
+      <h2>🎉 Mission Complete!</h2>
+      <div class="mission-icon" id="win-icon">🏆</div>
+      <p id="win-debrief-text">Debrief text goes here.</p>
+      <p class="debrief-stats">Score: <span id="win-score">0</span> &middot; Gold earned: <span id="win-gold">0</span></p>
+      <div class="screen-buttons">
+        <button id="next-level-button" class="game-button">➡ Next Mission</button>
+        <button id="level-select-button-win" class="game-button secondary-button">🗂 Mission Select</button>
+      </div>
+    </section>
+
+    <!-- Game Over Screen: Mission Debrief -->
+    <section class="screen mission-debrief" id="gameover-screen" hidden>
+      <h2>💀 Mission Failed</h2>
+      <div class="mission-icon" id="gameover-icon">💥</div>
+      <p id="gameover-debrief-text">Debrief text goes here.</p>
+      <p class="debrief-stats">Score: <span id="gameover-score">0</span></p>
+      <div class="screen-buttons">
+        <button id="retry-level-button" class="game-button">🔄 Retry Mission</button>
+        <button id="level-select-button-gameover" class="game-button secondary-button">🗂 Mission Select</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mission Intro popup: briefing card + START MISSION, shown before each run -->
+  <div class="modal-overlay" id="mission-intro-popup" hidden>
+    <div class="modal-box mission-intro-box">
+      <p class="intro-tag">🚨 OPTIMUS RESCUE SYSTEM</p>
+      <h3 id="intro-mission-title">MISSION 01</h3>
+      <p class="intro-location">LOCATION: <span id="intro-location-value">Unknown Zone</span></p>
+
+      <div class="intro-detail-row"><span>OBJECTIVE</span><span id="intro-objective-value">Rescue 3 survivors</span></div>
+      <div class="intro-detail-row"><span>TIME</span><span id="intro-time-value">60 seconds</span></div>
+      <div class="intro-detail-row"><span>DANGER</span><span id="intro-danger-value">—</span></div>
+      <div class="intro-detail-row"><span>REWARD</span><span id="intro-reward-value">0 gold</span></div>
+
+      <button id="intro-start-button" class="game-button">▶ START MISSION</button>
+    </div>
+  </div>
+
+  <!-- Countdown overlay: 3 / 2 / 1 / GO -->
+  <div class="modal-overlay countdown-overlay" id="countdown-popup" hidden>
+    <div class="countdown-number" id="countdown-number">3</div>
+  </div>
+
+  <!-- Revive popup: offered on failure, before the mission is finalized -->
+  <div class="modal-overlay" id="revive-popup" hidden>
+    <div class="modal-box">
+      <h3>💔 You went down!</h3>
+      <p id="revive-reason-text">Reason text goes here.</p>
+      <p class="revive-cost-line">
+        Spend <strong id="revive-cost-value">100</strong> gold to refill your health
+        and keep going from right here?
+      </p>
+      <p class="revive-gold-line">💰 Gold available: <span id="revive-gold-available">0</span></p>
+      <div class="screen-buttons">
+        <button id="revive-yes-button" class="game-button">❤️ Buy Health &amp; Continue</button>
+        <button id="revive-no-button" class="game-button secondary-button">🏳️ No, End Mission</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
